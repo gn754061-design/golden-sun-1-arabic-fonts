@@ -1,0 +1,652 @@
+{
+ "68": {
+  "ch": "",
+  "key": "spacer",
+  "form": "iso"
+ },
+ "69": {
+  "ch": "ـ",
+  "key": "tatweel",
+  "form": "iso"
+ },
+ "70": {
+  "ch": "ا",
+  "key": "alef",
+  "form": "iso"
+ },
+ "71": {
+  "ch": "ا",
+  "key": "alef",
+  "form": "fin"
+ },
+ "72": {
+  "ch": "أ",
+  "key": "alefHA",
+  "form": "iso"
+ },
+ "73": {
+  "ch": "أ",
+  "key": "alefHA",
+  "form": "fin"
+ },
+ "74": {
+  "ch": "إ",
+  "key": "alefHB",
+  "form": "iso"
+ },
+ "75": {
+  "ch": "إ",
+  "key": "alefHB",
+  "form": "fin"
+ },
+ "77": {
+  "ch": "آ",
+  "key": "alefMA",
+  "form": "iso"
+ },
+ "78": {
+  "ch": "آ",
+  "key": "alefMA",
+  "form": "fin"
+ },
+ "79": {
+  "ch": "ب",
+  "key": "beh",
+  "form": "iso"
+ },
+ "81": {
+  "ch": "ب",
+  "key": "beh",
+  "form": "fin"
+ },
+ "83": {
+  "ch": "ب",
+  "key": "beh",
+  "form": "ini"
+ },
+ "84": {
+  "ch": "ب",
+  "key": "beh",
+  "form": "med"
+ },
+ "85": {
+  "ch": "ت",
+  "key": "teh",
+  "form": "iso"
+ },
+ "86": {
+  "ch": "ت",
+  "key": "teh",
+  "form": "fin"
+ },
+ "87": {
+  "ch": "ت",
+  "key": "teh",
+  "form": "ini"
+ },
+ "88": {
+  "ch": "ت",
+  "key": "teh",
+  "form": "med"
+ },
+ "89": {
+  "ch": "ث",
+  "key": "theh",
+  "form": "iso"
+ },
+ "90": {
+  "ch": "ث",
+  "key": "theh",
+  "form": "fin"
+ },
+ "97": {
+  "ch": "ث",
+  "key": "theh",
+  "form": "ini"
+ },
+ "99": {
+  "ch": "ث",
+  "key": "theh",
+  "form": "med"
+ },
+ "101": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "iso"
+ },
+ "102": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "fin"
+ },
+ "103": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "ini"
+ },
+ "105": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "med"
+ },
+ "106": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "iso"
+ },
+ "107": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "fin"
+ },
+ "108": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "ini"
+ },
+ "109": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "med"
+ },
+ "110": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "iso"
+ },
+ "112": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "fin"
+ },
+ "113": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "ini"
+ },
+ "114": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "med"
+ },
+ "115": {
+  "ch": "د",
+  "key": "dal",
+  "form": "iso"
+ },
+ "116": {
+  "ch": "د",
+  "key": "dal",
+  "form": "fin"
+ },
+ "117": {
+  "ch": "ذ",
+  "key": "dhal",
+  "form": "iso"
+ },
+ "118": {
+  "ch": "ذ",
+  "key": "dhal",
+  "form": "fin"
+ },
+ "119": {
+  "ch": "ر",
+  "key": "reh",
+  "form": "iso"
+ },
+ "120": {
+  "ch": "ر",
+  "key": "reh",
+  "form": "fin"
+ },
+ "121": {
+  "ch": "ز",
+  "key": "zain",
+  "form": "iso"
+ },
+ "122": {
+  "ch": "ز",
+  "key": "zain",
+  "form": "fin"
+ },
+ "128": {
+  "ch": "س",
+  "key": "seen",
+  "form": "iso"
+ },
+ "129": {
+  "ch": "س",
+  "key": "seen",
+  "form": "fin"
+ },
+ "130": {
+  "ch": "س",
+  "key": "seen",
+  "form": "ini"
+ },
+ "131": {
+  "ch": "س",
+  "key": "seen",
+  "form": "med"
+ },
+ "132": {
+  "ch": "ش",
+  "key": "sheen",
+  "form": "iso"
+ },
+ "133": {
+  "ch": "ش",
+  "key": "sheen",
+  "form": "fin"
+ },
+ "134": {
+  "ch": "ش",
+  "key": "sheen",
+  "form": "ini"
+ },
+ "135": {
+  "ch": "ش",
+  "key": "sheen",
+  "form": "med"
+ },
+ "136": {
+  "ch": "ص",
+  "key": "sad",
+  "form": "iso"
+ },
+ "137": {
+  "ch": "ص",
+  "key": "sad",
+  "form": "fin"
+ },
+ "138": {
+  "ch": "ص",
+  "key": "sad",
+  "form": "ini"
+ },
+ "139": {
+  "ch": "ص",
+  "key": "sad",
+  "form": "med"
+ },
+ "140": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "iso"
+ },
+ "141": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "fin"
+ },
+ "142": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "ini"
+ },
+ "143": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "med"
+ },
+ "144": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "iso"
+ },
+ "145": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "fin"
+ },
+ "146": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "ini"
+ },
+ "147": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "med"
+ },
+ "148": {
+  "ch": "ظ",
+  "key": "zah",
+  "form": "iso"
+ },
+ "149": {
+  "ch": "ظ",
+  "key": "zah",
+  "form": "fin"
+ },
+ "150": {
+  "ch": "ظ",
+  "key": "zah",
+  "form": "ini"
+ },
+ "151": {
+  "ch": "ظ",
+  "key": "zah",
+  "form": "med"
+ },
+ "152": {
+  "ch": "ع",
+  "key": "ain",
+  "form": "iso"
+ },
+ "153": {
+  "ch": "ع",
+  "key": "ain",
+  "form": "fin"
+ },
+ "154": {
+  "ch": "ع",
+  "key": "ain",
+  "form": "ini"
+ },
+ "155": {
+  "ch": "ع",
+  "key": "ain",
+  "form": "med"
+ },
+ "156": {
+  "ch": "غ",
+  "key": "ghain",
+  "form": "iso"
+ },
+ "157": {
+  "ch": "غ",
+  "key": "ghain",
+  "form": "fin"
+ },
+ "158": {
+  "ch": "غ",
+  "key": "ghain",
+  "form": "ini"
+ },
+ "159": {
+  "ch": "غ",
+  "key": "ghain",
+  "form": "med"
+ },
+ "160": {
+  "ch": "ف",
+  "key": "feh",
+  "form": "iso"
+ },
+ "161": {
+  "ch": "ف",
+  "key": "feh",
+  "form": "fin"
+ },
+ "162": {
+  "ch": "ف",
+  "key": "feh",
+  "form": "ini"
+ },
+ "163": {
+  "ch": "ف",
+  "key": "feh",
+  "form": "med"
+ },
+ "164": {
+  "ch": "ق",
+  "key": "qaf",
+  "form": "iso"
+ },
+ "165": {
+  "ch": "ق",
+  "key": "qaf",
+  "form": "fin"
+ },
+ "166": {
+  "ch": "ق",
+  "key": "qaf",
+  "form": "ini"
+ },
+ "167": {
+  "ch": "ق",
+  "key": "qaf",
+  "form": "med"
+ },
+ "168": {
+  "ch": "ك",
+  "key": "kaf",
+  "form": "iso"
+ },
+ "169": {
+  "ch": "ك",
+  "key": "kaf",
+  "form": "fin"
+ },
+ "170": {
+  "ch": "ك",
+  "key": "kaf",
+  "form": "ini"
+ },
+ "171": {
+  "ch": "ك",
+  "key": "kaf",
+  "form": "med"
+ },
+ "172": {
+  "ch": "ل",
+  "key": "lam",
+  "form": "iso"
+ },
+ "173": {
+  "ch": "ل",
+  "key": "lam",
+  "form": "fin"
+ },
+ "174": {
+  "ch": "ل",
+  "key": "lam",
+  "form": "ini"
+ },
+ "175": {
+  "ch": "ل",
+  "key": "lam",
+  "form": "med"
+ },
+ "176": {
+  "ch": "م",
+  "key": "meem",
+  "form": "iso"
+ },
+ "177": {
+  "ch": "م",
+  "key": "meem",
+  "form": "fin"
+ },
+ "178": {
+  "ch": "م",
+  "key": "meem",
+  "form": "ini"
+ },
+ "179": {
+  "ch": "م",
+  "key": "meem",
+  "form": "med"
+ },
+ "180": {
+  "ch": "ن",
+  "key": "noon",
+  "form": "iso"
+ },
+ "181": {
+  "ch": "ن",
+  "key": "noon",
+  "form": "fin"
+ },
+ "182": {
+  "ch": "ن",
+  "key": "noon",
+  "form": "ini"
+ },
+ "183": {
+  "ch": "ن",
+  "key": "noon",
+  "form": "med"
+ },
+ "184": {
+  "ch": "ه",
+  "key": "heh",
+  "form": "iso"
+ },
+ "185": {
+  "ch": "ه",
+  "key": "heh",
+  "form": "fin"
+ },
+ "186": {
+  "ch": "ه",
+  "key": "heh",
+  "form": "ini"
+ },
+ "187": {
+  "ch": "ه",
+  "key": "heh",
+  "form": "med"
+ },
+ "188": {
+  "ch": "و",
+  "key": "waw",
+  "form": "iso"
+ },
+ "189": {
+  "ch": "و",
+  "key": "waw",
+  "form": "fin"
+ },
+ "190": {
+  "ch": "ي",
+  "key": "yeh",
+  "form": "iso"
+ },
+ "191": {
+  "ch": "ي",
+  "key": "yeh",
+  "form": "fin"
+ },
+ "192": {
+  "ch": "ي",
+  "key": "yeh",
+  "form": "ini"
+ },
+ "193": {
+  "ch": "ي",
+  "key": "yeh",
+  "form": "med"
+ },
+ "194": {
+  "ch": "ى",
+  "key": "maksura",
+  "form": "iso"
+ },
+ "195": {
+  "ch": "ى",
+  "key": "maksura",
+  "form": "fin"
+ },
+ "196": {
+  "ch": "ة",
+  "key": "tehM",
+  "form": "iso"
+ },
+ "197": {
+  "ch": "ة",
+  "key": "tehM",
+  "form": "fin"
+ },
+ "198": {
+  "ch": "ء",
+  "key": "hamza",
+  "form": "iso"
+ },
+ "199": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "iso"
+ },
+ "200": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "fin"
+ },
+ "201": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "ini"
+ },
+ "202": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "med"
+ },
+ "203": {
+  "ch": "لا",
+  "key": "lamalef",
+  "form": "iso"
+ },
+ "204": {
+  "ch": "لا",
+  "key": "lamalef",
+  "form": "fin"
+ },
+ "205": {
+  "ch": "لا",
+  "key": "lamalefHA",
+  "form": "iso"
+ },
+ "206": {
+  "ch": "لا",
+  "key": "lamalefHA",
+  "form": "fin"
+ },
+ "207": {
+  "ch": "لا",
+  "key": "lamalefHB",
+  "form": "iso"
+ },
+ "208": {
+  "ch": "لا",
+  "key": "lamalefHB",
+  "form": "fin"
+ },
+ "209": {
+  "ch": "لا",
+  "key": "lamalefMA",
+  "form": "iso"
+ },
+ "210": {
+  "ch": "لا",
+  "key": "lamalefMA",
+  "form": "fin"
+ },
+ "211": {
+  "ch": "،",
+  "key": "arComma",
+  "form": "iso"
+ },
+ "212": {
+  "ch": "؛",
+  "key": "arSemi",
+  "form": "iso"
+ },
+ "213": {
+  "ch": "؟",
+  "key": "arQuestion",
+  "form": "iso"
+ },
+ "214": {
+  "ch": "«",
+  "key": "guilOpen",
+  "form": "iso"
+ },
+ "215": {
+  "ch": "»",
+  "key": "guilClose",
+  "form": "iso"
+ }
+}

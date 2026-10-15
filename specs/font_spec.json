@@ -1,0 +1,845 @@
+{
+ "note": "All addresses are FILE offsets, which equal the GBA address minus 0x08000000.",
+ "rom": {
+  "dialogue_font": {
+   "off": "0x31E24",
+   "glyph_bytes": 32,
+   "glyphs": 256,
+   "format": "byte0 = advance width, then 15 rows x 2 bytes (16 px wide, MSB = leftmost), 1bpp. The renderer starts at row 4, so the visible band is rows 4..14."
+  },
+  "ui_font_ascii": {
+   "off": "0x320FB0",
+   "glyph_bytes": 32,
+   "glyphs": 128,
+   "note": "codes 0x00..0x7F"
+  },
+  "ui_font_arabic": {
+   "off": "0x321FB0",
+   "glyph_bytes": 32,
+   "glyphs": 128,
+   "note": "codes 0x80..0xFF"
+  },
+  "width_table": {
+   "off": "0x370D4",
+   "entries": 224,
+   "base_code": "0x20",
+   "note": "advance px per glyph, read by the engine for BOTH fonts. The engine never takes the width from the glyph itself."
+  },
+  "space_advance": {
+   "off": "0x370D4",
+   "value": 3,
+   "note": "set by fix_space.mjs; otherwise the word space stays 5px"
+  },
+  "char_range_check": {
+   "off": "0x155F0",
+   "value": "0xDF",
+   "note": "renderer rejects glyph codes > 0xFF; patched from 0x6F to 0xDF so codes 0x80..0xFF are usable"
+  },
+  "huffman_offsets_ptr": {
+   "off": "0x3842C",
+   "note": "uint32 -> huffman tree table; +4 -> tree offsets table"
+  },
+  "string_table": {
+   "off": "0x736B8",
+   "entries": 42,
+   "stride": 8,
+   "note": "uint32 block data ptr + uint32 lengths ptr per block of 256 strings"
+  },
+  "free_area": {
+   "off": "0x800000",
+   "used_by": "huffman trees + tree offsets + 42 string blocks + lengths"
+  },
+  "huffman_trees_off": "0x800000",
+  "tree_offsets_off": "0x801E60",
+  "first_block_off": "0x802060"
+ },
+ "font_codes": {
+  "total": 132,
+  "base": "0x80",
+  "note": "ar_codes.json (= translation/font_codes.json) is the single source of truth for letter+form -> code. Codes 0x3C/0x3E/0x5B/0x5D/0x7B/0x7C hold the first six letter forms (freed from the button slots); 0x7F holds jeem-med; 0xDE/0xDF hold the veh forms; 0x40/0x5E hold the guillemets.",
+  "entries": [
+   {
+    "code": 96,
+    "cp": 65171,
+    "name": "teh-marbuta-isol"
+   },
+   {
+    "code": 126,
+    "cp": 65172,
+    "name": "teh-marbuta-fin"
+   },
+   {
+    "code": 60,
+    "cp": 65167,
+    "name": "beh-isol"
+   },
+   {
+    "code": 129,
+    "cp": 65168,
+    "name": "beh-fin"
+   },
+   {
+    "code": 91,
+    "cp": 65169,
+    "name": "beh-init"
+   },
+   {
+    "code": 131,
+    "cp": 65170,
+    "name": "beh-med"
+   },
+   {
+    "code": 93,
+    "cp": 65173,
+    "name": "teh-isol"
+   },
+   {
+    "code": 133,
+    "cp": 65174,
+    "name": "teh-fin"
+   },
+   {
+    "code": 62,
+    "cp": 65175,
+    "name": "teh-init"
+   },
+   {
+    "code": 135,
+    "cp": 65176,
+    "name": "teh-med"
+   },
+   {
+    "code": 123,
+    "cp": 65177,
+    "name": "theh-isol"
+   },
+   {
+    "code": 137,
+    "cp": 65178,
+    "name": "theh-fin"
+   },
+   {
+    "code": 124,
+    "cp": 65179,
+    "name": "theh-init"
+   },
+   {
+    "code": 139,
+    "cp": 65180,
+    "name": "theh-med"
+   },
+   {
+    "code": 140,
+    "cp": 65181,
+    "name": "jeem-isol"
+   },
+   {
+    "code": 141,
+    "cp": 65182,
+    "name": "jeem-fin"
+   },
+   {
+    "code": 142,
+    "cp": 65183,
+    "name": "jeem-init"
+   },
+   {
+    "code": 127,
+    "cp": 65184,
+    "name": "jeem-med"
+   },
+   {
+    "code": 144,
+    "cp": 65185,
+    "name": "hah-isol"
+   },
+   {
+    "code": 145,
+    "cp": 65186,
+    "name": "hah-fin"
+   },
+   {
+    "code": 146,
+    "cp": 65187,
+    "name": "hah-init"
+   },
+   {
+    "code": 147,
+    "cp": 65188,
+    "name": "hah-med"
+   },
+   {
+    "code": 148,
+    "cp": 65189,
+    "name": "khah-isol"
+   },
+   {
+    "code": 149,
+    "cp": 65190,
+    "name": "khah-fin"
+   },
+   {
+    "code": 150,
+    "cp": 65191,
+    "name": "khah-init"
+   },
+   {
+    "code": 151,
+    "cp": 65192,
+    "name": "khah-med"
+   },
+   {
+    "code": 152,
+    "cp": 65201,
+    "name": "seen-isol"
+   },
+   {
+    "code": 153,
+    "cp": 65202,
+    "name": "seen-fin"
+   },
+   {
+    "code": 154,
+    "cp": 65203,
+    "name": "seen-init"
+   },
+   {
+    "code": 155,
+    "cp": 65204,
+    "name": "seen-med"
+   },
+   {
+    "code": 156,
+    "cp": 65205,
+    "name": "sheen-isol"
+   },
+   {
+    "code": 157,
+    "cp": 65206,
+    "name": "sheen-fin"
+   },
+   {
+    "code": 158,
+    "cp": 65207,
+    "name": "sheen-init"
+   },
+   {
+    "code": 159,
+    "cp": 65208,
+    "name": "sheen-med"
+   },
+   {
+    "code": 160,
+    "cp": 65209,
+    "name": "sad-isol"
+   },
+   {
+    "code": 161,
+    "cp": 65210,
+    "name": "sad-fin"
+   },
+   {
+    "code": 162,
+    "cp": 65211,
+    "name": "sad-init"
+   },
+   {
+    "code": 163,
+    "cp": 65212,
+    "name": "sad-med"
+   },
+   {
+    "code": 164,
+    "cp": 65213,
+    "name": "dad-isol"
+   },
+   {
+    "code": 165,
+    "cp": 65214,
+    "name": "dad-fin"
+   },
+   {
+    "code": 166,
+    "cp": 65215,
+    "name": "dad-init"
+   },
+   {
+    "code": 167,
+    "cp": 65216,
+    "name": "dad-med"
+   },
+   {
+    "code": 168,
+    "cp": 65217,
+    "name": "tah-isol"
+   },
+   {
+    "code": 169,
+    "cp": 65218,
+    "name": "tah-fin"
+   },
+   {
+    "code": 170,
+    "cp": 65219,
+    "name": "tah-init"
+   },
+   {
+    "code": 171,
+    "cp": 65220,
+    "name": "tah-med"
+   },
+   {
+    "code": 172,
+    "cp": 65221,
+    "name": "zah-isol"
+   },
+   {
+    "code": 173,
+    "cp": 65222,
+    "name": "zah-fin"
+   },
+   {
+    "code": 174,
+    "cp": 65223,
+    "name": "zah-init"
+   },
+   {
+    "code": 175,
+    "cp": 65224,
+    "name": "zah-med"
+   },
+   {
+    "code": 176,
+    "cp": 65225,
+    "name": "ain-isol"
+   },
+   {
+    "code": 177,
+    "cp": 65226,
+    "name": "ain-fin"
+   },
+   {
+    "code": 178,
+    "cp": 65227,
+    "name": "ain-init"
+   },
+   {
+    "code": 179,
+    "cp": 65228,
+    "name": "ain-med"
+   },
+   {
+    "code": 180,
+    "cp": 65229,
+    "name": "ghain-isol"
+   },
+   {
+    "code": 181,
+    "cp": 65230,
+    "name": "ghain-fin"
+   },
+   {
+    "code": 182,
+    "cp": 65231,
+    "name": "ghain-init"
+   },
+   {
+    "code": 183,
+    "cp": 65232,
+    "name": "ghain-med"
+   },
+   {
+    "code": 184,
+    "cp": 65233,
+    "name": "feh-isol"
+   },
+   {
+    "code": 185,
+    "cp": 65234,
+    "name": "feh-fin"
+   },
+   {
+    "code": 186,
+    "cp": 65235,
+    "name": "feh-init"
+   },
+   {
+    "code": 187,
+    "cp": 65236,
+    "name": "feh-med"
+   },
+   {
+    "code": 188,
+    "cp": 65237,
+    "name": "qaf-isol"
+   },
+   {
+    "code": 189,
+    "cp": 65238,
+    "name": "qaf-fin"
+   },
+   {
+    "code": 190,
+    "cp": 65239,
+    "name": "qaf-init"
+   },
+   {
+    "code": 191,
+    "cp": 65240,
+    "name": "qaf-med"
+   },
+   {
+    "code": 192,
+    "cp": 65241,
+    "name": "kaf-isol"
+   },
+   {
+    "code": 193,
+    "cp": 65242,
+    "name": "kaf-fin"
+   },
+   {
+    "code": 194,
+    "cp": 65243,
+    "name": "kaf-init"
+   },
+   {
+    "code": 195,
+    "cp": 65244,
+    "name": "kaf-med"
+   },
+   {
+    "code": 196,
+    "cp": 65245,
+    "name": "lam-isol"
+   },
+   {
+    "code": 197,
+    "cp": 65246,
+    "name": "lam-fin"
+   },
+   {
+    "code": 198,
+    "cp": 65247,
+    "name": "lam-init"
+   },
+   {
+    "code": 199,
+    "cp": 65248,
+    "name": "lam-med"
+   },
+   {
+    "code": 200,
+    "cp": 65249,
+    "name": "meem-isol"
+   },
+   {
+    "code": 201,
+    "cp": 65250,
+    "name": "meem-fin"
+   },
+   {
+    "code": 202,
+    "cp": 65251,
+    "name": "meem-init"
+   },
+   {
+    "code": 203,
+    "cp": 65252,
+    "name": "meem-med"
+   },
+   {
+    "code": 204,
+    "cp": 65253,
+    "name": "noon-isol"
+   },
+   {
+    "code": 205,
+    "cp": 65254,
+    "name": "noon-fin"
+   },
+   {
+    "code": 206,
+    "cp": 65255,
+    "name": "noon-init"
+   },
+   {
+    "code": 207,
+    "cp": 65256,
+    "name": "noon-med"
+   },
+   {
+    "code": 208,
+    "cp": 65257,
+    "name": "heh-isol"
+   },
+   {
+    "code": 209,
+    "cp": 65258,
+    "name": "heh-fin"
+   },
+   {
+    "code": 210,
+    "cp": 65259,
+    "name": "heh-init"
+   },
+   {
+    "code": 211,
+    "cp": 65260,
+    "name": "heh-med"
+   },
+   {
+    "code": 212,
+    "cp": 65265,
+    "name": "yeh-isol"
+   },
+   {
+    "code": 213,
+    "cp": 65266,
+    "name": "yeh-fin"
+   },
+   {
+    "code": 214,
+    "cp": 65267,
+    "name": "yeh-init"
+   },
+   {
+    "code": 215,
+    "cp": 65268,
+    "name": "yeh-med"
+   },
+   {
+    "code": 216,
+    "cp": 65161,
+    "name": "yeh-hamza-isol"
+   },
+   {
+    "code": 217,
+    "cp": 65162,
+    "name": "yeh-hamza-fin"
+   },
+   {
+    "code": 218,
+    "cp": 65163,
+    "name": "yeh-hamza-init"
+   },
+   {
+    "code": 219,
+    "cp": 65164,
+    "name": "yeh-hamza-med"
+   },
+   {
+    "code": 220,
+    "cp": 65165,
+    "name": "alef-isol"
+   },
+   {
+    "code": 221,
+    "cp": 65166,
+    "name": "alef-fin"
+   },
+   {
+    "code": 222,
+    "cp": 65280,
+    "name": "veh-isol"
+   },
+   {
+    "code": 223,
+    "cp": 65282,
+    "name": "veh-init"
+   },
+   {
+    "code": 223,
+    "cp": 65283,
+    "name": "veh-med"
+   },
+   {
+    "code": 223,
+    "cp": 65284,
+    "name": "veh-fin"
+   },
+   {
+    "code": 224,
+    "cp": 65193,
+    "name": "dal-isol"
+   },
+   {
+    "code": 225,
+    "cp": 65194,
+    "name": "dal-fin"
+   },
+   {
+    "code": 226,
+    "cp": 65195,
+    "name": "thal-isol"
+   },
+   {
+    "code": 227,
+    "cp": 65196,
+    "name": "thal-fin"
+   },
+   {
+    "code": 228,
+    "cp": 65197,
+    "name": "reh-isol"
+   },
+   {
+    "code": 229,
+    "cp": 65198,
+    "name": "reh-fin"
+   },
+   {
+    "code": 230,
+    "cp": 65199,
+    "name": "zain-isol"
+   },
+   {
+    "code": 231,
+    "cp": 65200,
+    "name": "zain-fin"
+   },
+   {
+    "code": 232,
+    "cp": 65261,
+    "name": "waw-isol"
+   },
+   {
+    "code": 233,
+    "cp": 65262,
+    "name": "waw-fin"
+   },
+   {
+    "code": 234,
+    "cp": 65263,
+    "name": "alef-maqsura-isol"
+   },
+   {
+    "code": 235,
+    "cp": 65264,
+    "name": "alef-maqsura-fin"
+   },
+   {
+    "code": 236,
+    "cp": 65152,
+    "name": "hamza-isol"
+   },
+   {
+    "code": 237,
+    "cp": 65153,
+    "name": "alef-madda-isol"
+   },
+   {
+    "code": 238,
+    "cp": 65154,
+    "name": "alef-madda-fin"
+   },
+   {
+    "code": 239,
+    "cp": 65155,
+    "name": "alef-hamza-isol"
+   },
+   {
+    "code": 240,
+    "cp": 65156,
+    "name": "alef-hamza-fin"
+   },
+   {
+    "code": 241,
+    "cp": 65157,
+    "name": "waw-hamza-isol"
+   },
+   {
+    "code": 242,
+    "cp": 65158,
+    "name": "waw-hamza-fin"
+   },
+   {
+    "code": 243,
+    "cp": 65159,
+    "name": "alef-hamza-below-isol"
+   },
+   {
+    "code": 244,
+    "cp": 65160,
+    "name": "alef-hamza-below-fin"
+   },
+   {
+    "code": 245,
+    "cp": 65275,
+    "name": "lam-alef-isol"
+   },
+   {
+    "code": 246,
+    "cp": 65276,
+    "name": "lam-alef-fin"
+   },
+   {
+    "code": 247,
+    "cp": 65271,
+    "name": "lam-alef-hamza-isol"
+   },
+   {
+    "code": 248,
+    "cp": 65272,
+    "name": "lam-alef-hamza-fin"
+   },
+   {
+    "code": 249,
+    "cp": 65273,
+    "name": "lam-alef-below-isol"
+   },
+   {
+    "code": 250,
+    "cp": 65274,
+    "name": "lam-alef-below-fin"
+   },
+   {
+    "code": 251,
+    "cp": 65269,
+    "name": "lam-alef-madda-isol"
+   },
+   {
+    "code": 252,
+    "cp": 65270,
+    "name": "lam-alef-madda-fin"
+   },
+   {
+    "code": 253,
+    "cp": 1600,
+    "name": "tatweel"
+   },
+   {
+    "code": 254,
+    "cp": 1548,
+    "name": "comma-ar"
+   },
+   {
+    "code": 255,
+    "cp": 1567,
+    "name": "question-ar"
+   }
+  ]
+ },
+ "statement_count": 10722,
+ "control_codes": {
+  "0x00": "terminator",
+  "0x01": "new text window",
+  "0x02": "close text box",
+  "0x03": "new line",
+  "0x04": "(undocumented)",
+  "0x05": "pause in dialogue scrolling",
+  "0x06": "(undocumented)",
+  "0x07": "makes the box behind the text disappear",
+  "0x08": "font colour, {08}{01..10}",
+  "0x09": "font instructions: {09}{02} bold, {09}{04} shaky paragraph, {09}{06} rotate pairs of letters - MUST stay at the string start (ar_build_text.mjs keeps a leading {09}{xx} in front of the RTL reversal)",
+  "0x0A": "shift the text, {10}{nn}? (see instruction table at 0x08039910)",
+  "0x0B": "(undocumented)",
+  "0x10": "[16] party leader name (no param)",
+  "0x11": "[17] party member name, param 1-8 = Isaac/Garet/Ivan/Mia/Felix/Jenna/Sheba/Piers",
+  "0x12": "[18] party member (situational), param",
+  "0x13": "[19] class name, param",
+  "0x14": "[20] item name, param 1 = specific item, 2 = treasure-chest item",
+  "0x15": "[21] string variable (djinn/psynergy names)",
+  "0x16": "[22] integer variable (numbers)",
+  "0x18": "[24] hyphen - only used by this translation as a phrase separator (59 strings)",
+  "0x19": "[25] 's' adder for English plurals - REMOVED from the translation (our font renders it as Latin s)",
+  "0x1A": "[26] button image, param 1-6 = A/B/L/R/Start/Select (drawn from the UI font slots 0x80..0x8A even)",
+  "0x1B": "[27] possessive 's marker",
+  "0x1C": "[28] stutter name (unused in GS1)",
+  "0x1D": "[29] inventory item with article, param 2-6 - REMOVED from 13 item-name strings (Arabic has no a/an)",
+  "0x1E": "[30] yes/no prompt - MUST be the last control code (620/620 verified)"
+ },
+ "build_chain": [
+  "node ar_build_text.mjs ar_translation_fresh_fixN.tsv ../script_extracted.json strings_fixN.txt   (RTL shaping, leading {09}{xx} kept at the front, trailing {02} restored by the paired-token safety net)",
+  "node build_fresh.mjs ar_translation_fresh_fixN.tsv GoldenSun_Arabic_v15_fresh23.gba out.gba   (build + pack + inject + fix_space + hud-font opt-in + full verification)",
+  "node fix_bar_glyph.mjs out.gba \"../Golden Sun (USA, Europe).gba\"   (jeem-med 0x8F -> 0x7F, vanilla HP/PP bar restored at 0x8F, both fonts)",
+  "node <copy the 6 moved letter-form glyphs to their new codes in the dialogue font + the guillemets>   (fresh31_fonts procedure)",
+  "node regen_ui_font_baseline.mjs out.gba out.gba   (8x8 menu font, BASELINE-aligned, widths synced)",
+  "node <restore the 6 vanilla buttons + the bar in the menu font + 0x01-0x06>   (restore_btns procedure)"
+ ],
+ "verify_chain": [
+  "node gs_unpack_strings.mjs out.gba romstrings.txt",
+  "node roundtrip_check.mjs strings_fixN.txt romstrings.txt                     -> 0 of 10722",
+  "node check_built_cmds.mjs strings_fixN.txt ctrl_fix_changes.json             -> 0 unintended (75 intentional: 66 {19} removals + 13 {1d} strips)",
+  "node qa_1e_position.mjs out.gba                                             -> 620/620 at end",
+  "node qa_linebreaks.mjs out.gba                                              -> widest ar 164px < 184px",
+  "node validate_main.mjs ar_translation_fresh_fixN.tsv report.json"
+ ],
+ "font_tools": {
+  "fontgen.ps1": "render Arabic letters into the 16x15 1bpp glyphs",
+  "fontgen2.ps1": "same, tuned spacing",
+  "fontgen3.ps1": "final fontgen, produced ar_font_work_v13_haafix_tuned.bin",
+  "fix_font.mjs": "patch single glyphs inside the font binary",
+  "fix_uifont_haa.mjs": "fix the haa glyph in the menu font",
+  "gen_ui_font_small.mjs": "regenerate the 8x8 4bpp menu font (palette 1=ink, 3=shadow, 4=bg) from the dialogue font and sync the width table",
+  "regen_ui_font_baseline.mjs": "regenerate the 8x8 menu font BOTTOM-ANCHORED (the old gen_ui_font_small.mjs top-anchored each glyph, so letters floated on different baselines)",
+  "fix_veh_glyph.mjs": "draw the veh (ڤ) glyphs in both fonts + copy the vanilla guillemets to 0x40/0x5E",
+  "move_btn_forms.mjs": "move the 6 letter forms occupying the button slots to free ASCII codes (in ar_codes.json)"
+ },
+ "changelog": [
+  [
+   "fresh16",
+   "the build the user approved: RTL shaping, {1E} to the end, 3px space, button glyphs, weapon descriptions, dead \"?\" slots"
+  ],
+  [
+   "fresh17",
+   "typos (السيد), #4581 {03}{03}->{03}, #8154/#8596 untranslated dialogues"
+  ],
+  [
+   "fresh18/19",
+   "REJECTED experiment: moved the original font back to 0x31E24 - broke the dialogue font"
+  ],
+  [
+   "fresh20",
+   "the user-approved release: the 0x8F HP-bar glyph restored, jeem-med moved to 0x7F, shortened status labels"
+  ],
+  [
+   "fresh21-23",
+   "label work: HP/PP labels back to Latin (fresh22), 54 more labels shortened (fresh23) - CAUTION: fresh23 lost fresh20 font state (jeem back at 0x8F), which broke the HP/PP bars into rows of \"ج\""
+  ],
+  [
+   "fresh24",
+   "THE CONTROL-CODE REPAIR: 95 strings whose {11}/{1d}/{1a} commands had lost their parameter byte (the build consumed the next text byte) - restored from the original bytes; {1d} stripped from 13 item names; {19} removed from 66 strings; the password keyboard rows reverted to English; ar_build_text safety net hardened (paired tokens); check_built_cmds.mjs added"
+  ],
+  [
+   "fresh25",
+   "the veh letter (ڤ) drawn in both fonts (0xDE/0xDF) - 90 strings no longer render \"?\""
+  ],
+  [
+   "fresh26/27",
+   "the guillemets « » mapped to the vanilla glyphs (0x40/0x5E); the Arabic semicolon;->; fixed in ar_shaping + the toFontCodes Latin-1 passthrough bug"
+  ],
+  [
+   "fresh28",
+   "the menu font regenerated BASELINE-ALIGNED (letters no longer float up/down); HP/PP recovery labels reverted to English"
+  ],
+  [
+   "fresh29",
+   "the menu-font alignment + the Arabic HP/PP recovery labels (later reverted)"
+  ],
+  [
+   "fresh30",
+   "fresh20 font state restored: jeem-med back to 0x7F, the vanilla HP/PP bar at 0x8F in BOTH fonts"
+  ],
+  [
+   "fresh31",
+   "the [26] button images restored (the Arabic letters had taken the UI-font button slots 0x80-0x8A; the 6 letter forms moved to 0x3C/0x3E/0x5B/0x5D/0x7B/0x7C); the vanilla hint slots 0x01-0x06 restored"
+  ],
+  [
+   "fresh32",
+   "the shy-effect fix: a leading {09}{xx} command is kept at the string start (the RTL reversal had moved it to the end, so \"هرهرة\" never jittered); all previous fixes preserved"
+  ]
+ ],
+ "reserved_codes": {
+  "0x80/0x82/0x84/0x86/0x88/0x8A": "[26] button images in the UI (menu) font - A/B/L/R/Start/Select, byte-identical to the vanilla font. No Arabic letter form may occupy these codes.",
+  "0x8F": "the HP/PP bar glyph (a 9px solid row, advance 7 with 2px overlap) in BOTH fonts.",
+  "0x7F": "jeem-med (moved off 0x8F by fix_codes_barglyph.mjs + fix_bar_glyph.mjs so the bar renders).",
+  "0x40/0x5E": "the guillemets « » (copied from the vanilla font codes 0xAB/0xBB by fix_veh_glyph.mjs).",
+  "0x18": "the {18} phrase-separator: a 2x2 dot at rows 9-10 (draw_dot_18.mjs), advance 6 - the earlier long dash merged with the next syllable looking like a \"ج + ا\" blob.",
+  "0xDE/0xDF": "veh (ڤ) - 0xDE isolated, 0xDF connected (init/med/fin share it), drawn by fix_veh_glyph.mjs."
+ },
+ "translation_tools": {
+  "fix_ctrl_params.mjs": "repair PARAM commands that lost their parameter byte (95 strings) + strip {1d} + remove {19} + revert the password keyboard rows",
+  "check_built_cmds.mjs": "STRICT check: compares PAIRED (command,param) token multisets, not raw byte multisets"
+ }
+}
