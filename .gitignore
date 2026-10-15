@@ -1,0 +1,8 @@
+# Binary/ROM/save files
+*.gba
+*.sav
+*.rar
+
+# OS files
+.DS_Store
+Thumbs.db
