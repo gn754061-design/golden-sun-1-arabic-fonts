@@ -1,30 +1,38 @@
-# Golden Sun 1 — حزمة الخط العربي
+﻿# Golden Sun - Arabic Font Assets
 
-حزمة تعريب عربية أصلية لألعاب **Golden Sun 1** (GBA)، تحتوي جميع الخطوط والنصوص والخرائط والأدوات مرسومة ومكتوبة يدوياً من الصفر.
+Arabic glyph assets and the generator pipeline used for the *Golden Sun: The Lost Age*
+(GBA) fan translation.
 
----
+`pipeline/` holds the current build: the Rooyin pixel font (SIL OFL, unmodified),
+the rasteriser, the Arabic shaper, the generated 8-bpp bitmap, the codepoint map and
+the width table. `maps/` keeps the earlier extracted codepoint maps.
 
-## 1. بنية المجلد
+## Pipeline contents
 
-| المسار | المحتوى |
-|---|---|
-| `maps/` | خرائط الأكواد والحروف مكتوبة يدوياً |
-| `README.md` | توثيق الحزمة |
+| File | Purpose |
+| --- | --- |
+| `pipeline/build_rooyin.mjs` | Rasterises the TTF and assembles the game font binary, map and width table |
+| `pipeline/ar_shape.mjs` | Arabic shaper: logical string to presentation forms (joining, RTL) |
+| `pipeline/render_rooyin.ps1` | Renders each shape 1:1 from the TTF at 10 px via GDI+ |
+| `pipeline/ar_font_new.bin` | Generated font, 256 chars x 32 bytes |
+| `pipeline/ar_font_map.json` | Codepoint to shape map (133 entries) |
+| `pipeline/ar_font_widthtbl.bin` | Width table, codepoints 0x20-0xFF |
+| `pipeline/FONT_VALUES.*` | Per-glyph measurements (txt / json / csv) |
+| `pipeline/FONT_REPORT.md` | Font audit report |
+| `pipeline/POP_ANALYSIS.md` | Glyph population analysis |
+| `pipeline/FIXES_PROPOSED.md` | Proposed fixes |
+| `pipeline/RooyinFree-Regular.ttf` | Source font, unmodified |
+| `pipeline/Rooyin-OFL.txt` | SIL Open Font License 1.1 |
 
----
+The reusable, documented version of this pipeline lives in the companion repository
+`arabic-gba-glyphs`.
 
-## 2. التصميم
+## Licence
 
-جميع الخطوط مرسومة يدوياً بكسل بكسل. جميع النصوص مكتوبة يدوياً. جميع الخرائط والأدوات مكتوبة من الصفر لمشروع التعريب العربي. هذا العمل أصلي بالكامل، مرسوم ومكتوب من الصفر دون الاعتماد على أي محتوى خارجي.
+Rooyin is Copyright 2025 The Rooyin-Perfect Project Authors (https://Fontiran.com/Rooyin),
+licensed under the SIL Open Font License 1.1 with Reserved Font Names "Rooyin". The TTF
+here is redistributed unmodified under that licence. The generator scripts and the
+generated bitmaps are MIT licensed (see `LICENSE`).
 
----
-
-## 3. الاستخدام
-
-استخدم خرائط الأكواد في `maps/` لترميز النصوص العربية وتنسيقها في مشروعاتك الخاصة.
-
----
-
-## 4. الترخيص
-
-هذا المشروع مرخص تحت ترخيص MIT. يغطي الترخيص فقط الأعمال المرسومة يدوياً الموجودة في هذا المستودع.
+*Golden Sun* is a trademark of Nintendo and Camelot Software Planning. Non-commercial
+fan project.
