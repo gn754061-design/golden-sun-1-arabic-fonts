@@ -1,6 +1,6 @@
 {
  "meta": {
-  "source_rom": "C:/Users/user/Desktop/game/GS_Arabic_Fresh/rom/base_clean.gba",
+  "source_rom": "base_clean.gba",
   "source_sha1": "5c4695205413df7db52b9a184815a07783999971",
   "note": "قيم مستخرجة من الروم النظيف مباشرة (لا اختبار، لا حقن)."
  },

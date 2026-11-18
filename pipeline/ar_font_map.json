@@ -1,667 +1,794 @@
 {
- "68": {
-  "ch": "",
-  "key": "spacer",
-  "form": "iso"
- },
  "69": {
   "ch": "ـ",
   "key": "tatweel",
-  "form": "iso"
+  "form": "iso",
+  "label": "ـ"
  },
  "70": {
   "ch": "ا",
   "key": "alef",
-  "form": "iso"
+  "form": "iso",
+  "label": "ا:iso"
  },
  "71": {
   "ch": "ا",
   "key": "alef",
-  "form": "fin"
+  "form": "fin",
+  "label": "ا:fin"
  },
  "72": {
   "ch": "أ",
   "key": "alefHA",
-  "form": "iso"
+  "form": "iso",
+  "label": "أ:iso"
  },
  "73": {
   "ch": "أ",
   "key": "alefHA",
-  "form": "fin"
+  "form": "fin",
+  "label": "أ:fin"
  },
  "74": {
   "ch": "إ",
   "key": "alefHB",
-  "form": "iso"
+  "form": "iso",
+  "label": "إ:iso"
  },
  "75": {
   "ch": "إ",
   "key": "alefHB",
-  "form": "fin"
+  "form": "fin",
+  "label": "إ:fin"
+ },
+ "76": {
+  "ch": "آ",
+  "key": "alefMA",
+  "form": "iso",
+  "label": "آ:iso"
  },
  "77": {
   "ch": "آ",
   "key": "alefMA",
-  "form": "iso"
+  "form": "fin",
+  "label": "آ:fin"
  },
  "78": {
-  "ch": "آ",
-  "key": "alefMA",
-  "form": "fin"
+  "ch": "ب",
+  "key": "beh",
+  "form": "iso",
+  "label": "ب:iso"
  },
  "79": {
   "ch": "ب",
   "key": "beh",
-  "form": "iso"
+  "form": "fin",
+  "label": "ب:fin"
+ },
+ "80": {
+  "ch": "ب",
+  "key": "beh",
+  "form": "ini",
+  "label": "ب:ini"
  },
  "81": {
   "ch": "ب",
   "key": "beh",
-  "form": "fin"
+  "form": "med",
+  "label": "ب:med"
+ },
+ "82": {
+  "ch": "ت",
+  "key": "teh",
+  "form": "iso",
+  "label": "ت:iso"
  },
  "83": {
-  "ch": "ب",
-  "key": "beh",
-  "form": "ini"
+  "ch": "ت",
+  "key": "teh",
+  "form": "fin",
+  "label": "ت:fin"
  },
  "84": {
-  "ch": "ب",
-  "key": "beh",
-  "form": "med"
+  "ch": "ت",
+  "key": "teh",
+  "form": "ini",
+  "label": "ت:ini"
  },
  "85": {
   "ch": "ت",
   "key": "teh",
-  "form": "iso"
+  "form": "med",
+  "label": "ت:med"
  },
  "86": {
-  "ch": "ت",
-  "key": "teh",
-  "form": "fin"
+  "ch": "ث",
+  "key": "theh",
+  "form": "iso",
+  "label": "ث:iso"
  },
  "87": {
-  "ch": "ت",
-  "key": "teh",
-  "form": "ini"
+  "ch": "ث",
+  "key": "theh",
+  "form": "fin",
+  "label": "ث:fin"
  },
  "88": {
-  "ch": "ت",
-  "key": "teh",
-  "form": "med"
+  "ch": "ث",
+  "key": "theh",
+  "form": "ini",
+  "label": "ث:ini"
  },
  "89": {
   "ch": "ث",
   "key": "theh",
-  "form": "iso"
+  "form": "med",
+  "label": "ث:med"
  },
  "90": {
-  "ch": "ث",
-  "key": "theh",
-  "form": "fin"
+  "ch": "ج",
+  "key": "jeem",
+  "form": "iso",
+  "label": "ج:iso"
+ },
+ "91": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "fin",
+  "label": "ج:fin"
+ },
+ "92": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "ini",
+  "label": "ج:ini"
+ },
+ "93": {
+  "ch": "ج",
+  "key": "jeem",
+  "form": "med",
+  "label": "ج:med"
+ },
+ "94": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "iso",
+  "label": "ح:iso"
+ },
+ "95": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "fin",
+  "label": "ح:fin"
+ },
+ "96": {
+  "ch": "ح",
+  "key": "hah",
+  "form": "ini",
+  "label": "ح:ini"
  },
  "97": {
-  "ch": "ث",
-  "key": "theh",
-  "form": "ini"
+  "ch": "ح",
+  "key": "hah",
+  "form": "med",
+  "label": "ح:med"
+ },
+ "98": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "iso",
+  "label": "خ:iso"
  },
  "99": {
-  "ch": "ث",
-  "key": "theh",
-  "form": "med"
+  "ch": "خ",
+  "key": "khah",
+  "form": "fin",
+  "label": "خ:fin"
+ },
+ "100": {
+  "ch": "خ",
+  "key": "khah",
+  "form": "ini",
+  "label": "خ:ini"
  },
  "101": {
-  "ch": "ج",
-  "key": "jeem",
-  "form": "iso"
+  "ch": "خ",
+  "key": "khah",
+  "form": "med",
+  "label": "خ:med"
  },
  "102": {
-  "ch": "ج",
-  "key": "jeem",
-  "form": "fin"
+  "ch": "د",
+  "key": "dal",
+  "form": "iso",
+  "label": "د:iso"
  },
  "103": {
-  "ch": "ج",
-  "key": "jeem",
-  "form": "ini"
+  "ch": "د",
+  "key": "dal",
+  "form": "fin",
+  "label": "د:fin"
+ },
+ "104": {
+  "ch": "ذ",
+  "key": "dhal",
+  "form": "iso",
+  "label": "ذ:iso"
  },
  "105": {
-  "ch": "ج",
-  "key": "jeem",
-  "form": "med"
+  "ch": "ذ",
+  "key": "dhal",
+  "form": "fin",
+  "label": "ذ:fin"
  },
  "106": {
-  "ch": "ح",
-  "key": "hah",
-  "form": "iso"
+  "ch": "ر",
+  "key": "reh",
+  "form": "iso",
+  "label": "ر:iso"
  },
  "107": {
-  "ch": "ح",
-  "key": "hah",
-  "form": "fin"
+  "ch": "ر",
+  "key": "reh",
+  "form": "fin",
+  "label": "ر:fin"
  },
  "108": {
-  "ch": "ح",
-  "key": "hah",
-  "form": "ini"
+  "ch": "ز",
+  "key": "zain",
+  "form": "iso",
+  "label": "ز:iso"
  },
  "109": {
-  "ch": "ح",
-  "key": "hah",
-  "form": "med"
+  "ch": "ز",
+  "key": "zain",
+  "form": "fin",
+  "label": "ز:fin"
  },
  "110": {
-  "ch": "خ",
-  "key": "khah",
-  "form": "iso"
+  "ch": "س",
+  "key": "seen",
+  "form": "iso",
+  "label": "س:iso"
+ },
+ "111": {
+  "ch": "س",
+  "key": "seen",
+  "form": "fin",
+  "label": "س:fin"
  },
  "112": {
-  "ch": "خ",
-  "key": "khah",
-  "form": "fin"
+  "ch": "س",
+  "key": "seen",
+  "form": "ini",
+  "label": "س:ini"
  },
  "113": {
-  "ch": "خ",
-  "key": "khah",
-  "form": "ini"
+  "ch": "س",
+  "key": "seen",
+  "form": "med",
+  "label": "س:med"
  },
  "114": {
-  "ch": "خ",
-  "key": "khah",
-  "form": "med"
+  "ch": "ش",
+  "key": "sheen",
+  "form": "iso",
+  "label": "ش:iso"
  },
  "115": {
-  "ch": "د",
-  "key": "dal",
-  "form": "iso"
+  "ch": "ش",
+  "key": "sheen",
+  "form": "fin",
+  "label": "ش:fin"
  },
  "116": {
-  "ch": "د",
-  "key": "dal",
-  "form": "fin"
+  "ch": "ش",
+  "key": "sheen",
+  "form": "ini",
+  "label": "ش:ini"
  },
  "117": {
-  "ch": "ذ",
-  "key": "dhal",
-  "form": "iso"
+  "ch": "ش",
+  "key": "sheen",
+  "form": "med",
+  "label": "ش:med"
  },
  "118": {
-  "ch": "ذ",
-  "key": "dhal",
-  "form": "fin"
+  "ch": "ص",
+  "key": "sad",
+  "form": "iso",
+  "label": "ص:iso"
  },
  "119": {
-  "ch": "ر",
-  "key": "reh",
-  "form": "iso"
+  "ch": "ص",
+  "key": "sad",
+  "form": "fin",
+  "label": "ص:fin"
  },
  "120": {
-  "ch": "ر",
-  "key": "reh",
-  "form": "fin"
+  "ch": "ص",
+  "key": "sad",
+  "form": "ini",
+  "label": "ص:ini"
  },
  "121": {
-  "ch": "ز",
-  "key": "zain",
-  "form": "iso"
+  "ch": "ص",
+  "key": "sad",
+  "form": "med",
+  "label": "ص:med"
  },
  "122": {
-  "ch": "ز",
-  "key": "zain",
-  "form": "fin"
+  "ch": "ض",
+  "key": "dad",
+  "form": "iso",
+  "label": "ض:iso"
+ },
+ "123": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "fin",
+  "label": "ض:fin"
+ },
+ "124": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "ini",
+  "label": "ض:ini"
+ },
+ "125": {
+  "ch": "ض",
+  "key": "dad",
+  "form": "med",
+  "label": "ض:med"
+ },
+ "126": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "iso",
+  "label": "ط:iso"
+ },
+ "127": {
+  "ch": "ط",
+  "key": "tah",
+  "form": "fin",
+  "label": "ط:fin"
  },
  "128": {
-  "ch": "س",
-  "key": "seen",
-  "form": "iso"
+  "ch": "ط",
+  "key": "tah",
+  "form": "ini",
+  "label": "ط:ini"
  },
  "129": {
-  "ch": "س",
-  "key": "seen",
-  "form": "fin"
+  "ch": "ط",
+  "key": "tah",
+  "form": "med",
+  "label": "ط:med"
  },
  "130": {
-  "ch": "س",
-  "key": "seen",
-  "form": "ini"
+  "ch": "ظ",
+  "key": "zah",
+  "form": "iso",
+  "label": "ظ:iso"
  },
  "131": {
-  "ch": "س",
-  "key": "seen",
-  "form": "med"
+  "ch": "ظ",
+  "key": "zah",
+  "form": "fin",
+  "label": "ظ:fin"
  },
  "132": {
-  "ch": "ش",
-  "key": "sheen",
-  "form": "iso"
+  "ch": "ظ",
+  "key": "zah",
+  "form": "ini",
+  "label": "ظ:ini"
  },
  "133": {
-  "ch": "ش",
-  "key": "sheen",
-  "form": "fin"
+  "ch": "ظ",
+  "key": "zah",
+  "form": "med",
+  "label": "ظ:med"
  },
  "134": {
-  "ch": "ش",
-  "key": "sheen",
-  "form": "ini"
+  "ch": "ع",
+  "key": "ain",
+  "form": "iso",
+  "label": "ع:iso"
  },
  "135": {
-  "ch": "ش",
-  "key": "sheen",
-  "form": "med"
+  "ch": "ع",
+  "key": "ain",
+  "form": "fin",
+  "label": "ع:fin"
  },
  "136": {
-  "ch": "ص",
-  "key": "sad",
-  "form": "iso"
+  "ch": "ع",
+  "key": "ain",
+  "form": "ini",
+  "label": "ع:ini"
  },
  "137": {
-  "ch": "ص",
-  "key": "sad",
-  "form": "fin"
+  "ch": "ع",
+  "key": "ain",
+  "form": "med",
+  "label": "ع:med"
  },
  "138": {
-  "ch": "ص",
-  "key": "sad",
-  "form": "ini"
+  "ch": "غ",
+  "key": "ghain",
+  "form": "iso",
+  "label": "غ:iso"
  },
  "139": {
-  "ch": "ص",
-  "key": "sad",
-  "form": "med"
+  "ch": "غ",
+  "key": "ghain",
+  "form": "fin",
+  "label": "غ:fin"
  },
  "140": {
-  "ch": "ض",
-  "key": "dad",
-  "form": "iso"
+  "ch": "غ",
+  "key": "ghain",
+  "form": "ini",
+  "label": "غ:ini"
  },
  "141": {
-  "ch": "ض",
-  "key": "dad",
-  "form": "fin"
+  "ch": "غ",
+  "key": "ghain",
+  "form": "med",
+  "label": "غ:med"
  },
  "142": {
-  "ch": "ض",
-  "key": "dad",
-  "form": "ini"
+  "ch": "ف",
+  "key": "feh",
+  "form": "iso",
+  "label": "ف:iso"
  },
  "143": {
-  "ch": "ض",
-  "key": "dad",
-  "form": "med"
+  "ch": "ف",
+  "key": "feh",
+  "form": "fin",
+  "label": "ف:fin"
  },
  "144": {
-  "ch": "ط",
-  "key": "tah",
-  "form": "iso"
+  "ch": "ف",
+  "key": "feh",
+  "form": "ini",
+  "label": "ف:ini"
  },
  "145": {
-  "ch": "ط",
-  "key": "tah",
-  "form": "fin"
+  "ch": "ف",
+  "key": "feh",
+  "form": "med",
+  "label": "ف:med"
  },
  "146": {
-  "ch": "ط",
-  "key": "tah",
-  "form": "ini"
+  "ch": "ق",
+  "key": "qaf",
+  "form": "iso",
+  "label": "ق:iso"
  },
  "147": {
-  "ch": "ط",
-  "key": "tah",
-  "form": "med"
+  "ch": "ق",
+  "key": "qaf",
+  "form": "fin",
+  "label": "ق:fin"
  },
  "148": {
-  "ch": "ظ",
-  "key": "zah",
-  "form": "iso"
+  "ch": "ق",
+  "key": "qaf",
+  "form": "ini",
+  "label": "ق:ini"
  },
  "149": {
-  "ch": "ظ",
-  "key": "zah",
-  "form": "fin"
+  "ch": "ق",
+  "key": "qaf",
+  "form": "med",
+  "label": "ق:med"
  },
  "150": {
-  "ch": "ظ",
-  "key": "zah",
-  "form": "ini"
+  "ch": "ك",
+  "key": "kaf",
+  "form": "iso",
+  "label": "ك:iso"
  },
  "151": {
-  "ch": "ظ",
-  "key": "zah",
-  "form": "med"
+  "ch": "ك",
+  "key": "kaf",
+  "form": "fin",
+  "label": "ك:fin"
  },
  "152": {
-  "ch": "ع",
-  "key": "ain",
-  "form": "iso"
+  "ch": "ك",
+  "key": "kaf",
+  "form": "ini",
+  "label": "ك:ini"
  },
  "153": {
-  "ch": "ع",
-  "key": "ain",
-  "form": "fin"
+  "ch": "ك",
+  "key": "kaf",
+  "form": "med",
+  "label": "ك:med"
  },
  "154": {
-  "ch": "ع",
-  "key": "ain",
-  "form": "ini"
+  "ch": "ل",
+  "key": "lam",
+  "form": "iso",
+  "label": "ل:iso"
  },
  "155": {
-  "ch": "ع",
-  "key": "ain",
-  "form": "med"
+  "ch": "ل",
+  "key": "lam",
+  "form": "fin",
+  "label": "ل:fin"
  },
  "156": {
-  "ch": "غ",
-  "key": "ghain",
-  "form": "iso"
+  "ch": "ل",
+  "key": "lam",
+  "form": "ini",
+  "label": "ل:ini"
  },
  "157": {
-  "ch": "غ",
-  "key": "ghain",
-  "form": "fin"
+  "ch": "ل",
+  "key": "lam",
+  "form": "med",
+  "label": "ل:med"
  },
  "158": {
-  "ch": "غ",
-  "key": "ghain",
-  "form": "ini"
+  "ch": "م",
+  "key": "meem",
+  "form": "iso",
+  "label": "م:iso"
  },
  "159": {
-  "ch": "غ",
-  "key": "ghain",
-  "form": "med"
+  "ch": "م",
+  "key": "meem",
+  "form": "fin",
+  "label": "م:fin"
  },
  "160": {
-  "ch": "ف",
-  "key": "feh",
-  "form": "iso"
+  "ch": "م",
+  "key": "meem",
+  "form": "ini",
+  "label": "م:ini"
  },
  "161": {
-  "ch": "ف",
-  "key": "feh",
-  "form": "fin"
+  "ch": "م",
+  "key": "meem",
+  "form": "med",
+  "label": "م:med"
  },
  "162": {
-  "ch": "ف",
-  "key": "feh",
-  "form": "ini"
+  "ch": "ن",
+  "key": "noon",
+  "form": "iso",
+  "label": "ن:iso"
  },
  "163": {
-  "ch": "ف",
-  "key": "feh",
-  "form": "med"
+  "ch": "ن",
+  "key": "noon",
+  "form": "fin",
+  "label": "ن:fin"
  },
  "164": {
-  "ch": "ق",
-  "key": "qaf",
-  "form": "iso"
+  "ch": "ن",
+  "key": "noon",
+  "form": "ini",
+  "label": "ن:ini"
  },
  "165": {
-  "ch": "ق",
-  "key": "qaf",
-  "form": "fin"
+  "ch": "ن",
+  "key": "noon",
+  "form": "med",
+  "label": "ن:med"
  },
  "166": {
-  "ch": "ق",
-  "key": "qaf",
-  "form": "ini"
+  "ch": "ه",
+  "key": "heh",
+  "form": "iso",
+  "label": "ه:iso"
  },
  "167": {
-  "ch": "ق",
-  "key": "qaf",
-  "form": "med"
+  "ch": "ه",
+  "key": "heh",
+  "form": "fin",
+  "label": "ه:fin"
  },
  "168": {
-  "ch": "ك",
-  "key": "kaf",
-  "form": "iso"
+  "ch": "ه",
+  "key": "heh",
+  "form": "ini",
+  "label": "ه:ini"
  },
  "169": {
-  "ch": "ك",
-  "key": "kaf",
-  "form": "fin"
+  "ch": "ه",
+  "key": "heh",
+  "form": "med",
+  "label": "ه:med"
  },
  "170": {
-  "ch": "ك",
-  "key": "kaf",
-  "form": "ini"
+  "ch": "و",
+  "key": "waw",
+  "form": "iso",
+  "label": "و:iso"
  },
  "171": {
-  "ch": "ك",
-  "key": "kaf",
-  "form": "med"
+  "ch": "و",
+  "key": "waw",
+  "form": "fin",
+  "label": "و:fin"
  },
  "172": {
-  "ch": "ل",
-  "key": "lam",
-  "form": "iso"
+  "ch": "ي",
+  "key": "yeh",
+  "form": "iso",
+  "label": "ي:iso"
  },
  "173": {
-  "ch": "ل",
-  "key": "lam",
-  "form": "fin"
+  "ch": "ي",
+  "key": "yeh",
+  "form": "fin",
+  "label": "ي:fin"
  },
  "174": {
-  "ch": "ل",
-  "key": "lam",
-  "form": "ini"
+  "ch": "ي",
+  "key": "yeh",
+  "form": "ini",
+  "label": "ي:ini"
  },
  "175": {
-  "ch": "ل",
-  "key": "lam",
-  "form": "med"
+  "ch": "ي",
+  "key": "yeh",
+  "form": "med",
+  "label": "ي:med"
  },
  "176": {
-  "ch": "م",
-  "key": "meem",
-  "form": "iso"
+  "ch": "ى",
+  "key": "maksura",
+  "form": "iso",
+  "label": "ى:iso"
  },
  "177": {
-  "ch": "م",
-  "key": "meem",
-  "form": "fin"
+  "ch": "ى",
+  "key": "maksura",
+  "form": "fin",
+  "label": "ى:fin"
  },
  "178": {
-  "ch": "م",
-  "key": "meem",
-  "form": "ini"
+  "ch": "ة",
+  "key": "tehM",
+  "form": "iso",
+  "label": "ة:iso"
  },
  "179": {
-  "ch": "م",
-  "key": "meem",
-  "form": "med"
+  "ch": "ة",
+  "key": "tehM",
+  "form": "fin",
+  "label": "ة:fin"
  },
  "180": {
-  "ch": "ن",
-  "key": "noon",
-  "form": "iso"
- },
- "181": {
-  "ch": "ن",
-  "key": "noon",
-  "form": "fin"
- },
- "182": {
-  "ch": "ن",
-  "key": "noon",
-  "form": "ini"
- },
- "183": {
-  "ch": "ن",
-  "key": "noon",
-  "form": "med"
- },
- "184": {
-  "ch": "ه",
-  "key": "heh",
-  "form": "iso"
- },
- "185": {
-  "ch": "ه",
-  "key": "heh",
-  "form": "fin"
- },
- "186": {
-  "ch": "ه",
-  "key": "heh",
-  "form": "ini"
- },
- "187": {
-  "ch": "ه",
-  "key": "heh",
-  "form": "med"
- },
- "188": {
-  "ch": "و",
-  "key": "waw",
-  "form": "iso"
- },
- "189": {
-  "ch": "و",
-  "key": "waw",
-  "form": "fin"
- },
- "190": {
-  "ch": "ي",
-  "key": "yeh",
-  "form": "iso"
- },
- "191": {
-  "ch": "ي",
-  "key": "yeh",
-  "form": "fin"
- },
- "192": {
-  "ch": "ي",
-  "key": "yeh",
-  "form": "ini"
- },
- "193": {
-  "ch": "ي",
-  "key": "yeh",
-  "form": "med"
- },
- "194": {
-  "ch": "ى",
-  "key": "maksura",
-  "form": "iso"
- },
- "195": {
-  "ch": "ى",
-  "key": "maksura",
-  "form": "fin"
- },
- "196": {
-  "ch": "ة",
-  "key": "tehM",
-  "form": "iso"
- },
- "197": {
-  "ch": "ة",
-  "key": "tehM",
-  "form": "fin"
- },
- "198": {
   "ch": "ء",
   "key": "hamza",
-  "form": "iso"
+  "form": "iso",
+  "label": "ء:iso"
+ },
+ "181": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "iso",
+  "label": "ئ:iso"
+ },
+ "182": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "fin",
+  "label": "ئ:fin"
+ },
+ "183": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "ini",
+  "label": "ئ:ini"
+ },
+ "184": {
+  "ch": "ئ",
+  "key": "yehH",
+  "form": "med",
+  "label": "ئ:med"
+ },
+ "185": {
+  "ch": "ligature LAM WITH ALEF ISOLATED",
+  "key": "ligature LAM WITH ALEF ISOLATED",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF ISOLATED"
+ },
+ "186": {
+  "ch": "ligature LAM WITH ALEF FINAL",
+  "key": "ligature LAM WITH ALEF FINAL",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF FINAL"
+ },
+ "187": {
+  "ch": "ligature LAM WITH ALEF WITH HAMZA ABOVE ISOLATED",
+  "key": "ligature LAM WITH ALEF WITH HAMZA ABOVE ISOLATED",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH HAMZA ABOVE ISOLATED"
+ },
+ "188": {
+  "ch": "ligature LAM WITH ALEF WITH HAMZA ABOVE FINAL",
+  "key": "ligature LAM WITH ALEF WITH HAMZA ABOVE FINAL",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH HAMZA ABOVE FINAL"
+ },
+ "189": {
+  "ch": "ligature LAM WITH ALEF WITH HAMZA BELOW ISOLATED",
+  "key": "ligature LAM WITH ALEF WITH HAMZA BELOW ISOLATED",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH HAMZA BELOW ISOLATED"
+ },
+ "190": {
+  "ch": "ligature LAM WITH ALEF WITH HAMZA BELOW FINAL",
+  "key": "ligature LAM WITH ALEF WITH HAMZA BELOW FINAL",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH HAMZA BELOW FINAL"
+ },
+ "191": {
+  "ch": "ligature LAM WITH ALEF WITH MADDA ABOVE ISOLATED",
+  "key": "ligature LAM WITH ALEF WITH MADDA ABOVE ISOLATED",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH MADDA ABOVE ISOLATED"
+ },
+ "192": {
+  "ch": "ligature LAM WITH ALEF WITH MADDA ABOVE FINAL",
+  "key": "ligature LAM WITH ALEF WITH MADDA ABOVE FINAL",
+  "form": "iso",
+  "label": "ligature LAM WITH ALEF WITH MADDA ABOVE FINAL"
+ },
+ "193": {
+  "ch": "،",
+  "key": "comma",
+  "form": "iso",
+  "label": "،"
+ },
+ "194": {
+  "ch": "؛",
+  "key": "semicolon",
+  "form": "iso",
+  "label": "؛"
+ },
+ "195": {
+  "ch": "؟",
+  "key": "question",
+  "form": "iso",
+  "label": "؟"
+ },
+ "196": {
+  "ch": "«",
+  "key": "guillemetL",
+  "form": "iso",
+  "label": "«"
+ },
+ "197": {
+  "ch": "»",
+  "key": "guillemetR",
+  "form": "iso",
+  "label": "»"
+ },
+ "198": {
+  "ch": "ؤ",
+  "key": "wawH",
+  "form": "iso",
+  "label": "ؤ:iso"
  },
  "199": {
-  "ch": "ئ",
-  "key": "yehH",
-  "form": "iso"
+  "ch": "ؤ",
+  "key": "wawH",
+  "form": "fin",
+  "label": "ؤ:fin"
  },
  "200": {
-  "ch": "ئ",
-  "key": "yehH",
-  "form": "fin"
- },
- "201": {
-  "ch": "ئ",
-  "key": "yehH",
-  "form": "ini"
- },
- "202": {
-  "ch": "ئ",
-  "key": "yehH",
-  "form": "med"
- },
- "203": {
-  "ch": "لا",
-  "key": "lamalef",
-  "form": "iso"
- },
- "204": {
-  "ch": "لا",
-  "key": "lamalef",
-  "form": "fin"
- },
- "205": {
-  "ch": "لا",
-  "key": "lamalefHA",
-  "form": "iso"
- },
- "206": {
-  "ch": "لا",
-  "key": "lamalefHA",
-  "form": "fin"
- },
- "207": {
-  "ch": "لا",
-  "key": "lamalefHB",
-  "form": "iso"
- },
- "208": {
-  "ch": "لا",
-  "key": "lamalefHB",
-  "form": "fin"
- },
- "209": {
-  "ch": "لا",
-  "key": "lamalefMA",
-  "form": "iso"
- },
- "210": {
-  "ch": "لا",
-  "key": "lamalefMA",
-  "form": "fin"
- },
- "211": {
-  "ch": "،",
-  "key": "arComma",
-  "form": "iso"
- },
- "212": {
-  "ch": "؛",
-  "key": "arSemi",
-  "form": "iso"
- },
- "213": {
-  "ch": "؟",
-  "key": "arQuestion",
-  "form": "iso"
- },
- "214": {
-  "ch": "«",
-  "key": "guilOpen",
-  "form": "iso"
- },
- "215": {
-  "ch": "»",
-  "key": "guilClose",
-  "form": "iso"
- },
- "216": {
-  "ch": "ؤ",
-  "key": "wawH",
-  "form": "iso"
- },
- "217": {
-  "ch": "ؤ",
-  "key": "wawH",
-  "form": "fin"
- },
- "218": {
   "ch": "ڤ",
   "key": "veh",
-  "form": "iso"
+  "form": "iso",
+  "label": "ڤ:iso"
  }
 }

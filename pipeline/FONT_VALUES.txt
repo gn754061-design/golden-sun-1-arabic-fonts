@@ -1,5 +1,5 @@
 # قيم الفونت — Golden Sun (GS1)
-# المصدر: C:/Users/user/Desktop/game/GS_Arabic_Fresh/rom/base_clean.gba
+# المصدر: base_clean.gba
 # SHA1: 5c4695205413df7db52b9a184815a07783999971
 
 == (1) عروض خط الحوار — جدول 0x370D4 (224 مدخلاً، الرموز 0x20..0xFF) ==

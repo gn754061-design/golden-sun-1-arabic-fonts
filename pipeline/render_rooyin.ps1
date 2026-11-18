@@ -1,16 +1,31 @@
-# render_rooyin.ps1 — render every needed glyph form from Rooyin at design size 10 (1:1)
-param([string]$Out = "C:\Users\user\Desktop\game\GS_Arabic_Fresh\fonts\rooyin_render.txt")
+﻿# render_rooyin.ps1 — render every needed glyph form from Rooyin at design size 10 (1:1)
+param(
+  [string]$Out = "$PSScriptRoot\rooyin_render.txt",
+  [string]$FontPath = "$PSScriptRoot\RooyinFree-Regular.ttf",
+  [string]$LabelsPath = "$PSScriptRoot\render_labels.json"
+)
 Add-Type -AssemblyName System.Drawing
 $fc = New-Object System.Drawing.Text.PrivateFontCollection
-$fc.AddFontFile("C:\Users\user\Desktop\game\GS_Arabic_Fresh\fonts\RooyinFree-Regular.ttf")
+if (-not (Test-Path $FontPath)) {
+  Write-Error "Font file not found: $FontPath"
+  exit 1
+}
+$fc.AddFontFile($FontPath)
 $fam = $fc.Families[0]
 $SIZE = 10
 $bmpW = 40; $bmpH = 40
 $cps = @()
-foreach ($line in (Get-Content "C:\Users\user\Desktop\game\GS_Arabic_Fresh\fonts\render_list.txt")) {
-  $t = $line.Trim()
-  if ($t.Length -gt 0) { $cps += [Convert]::ToInt32($t, 16) }
+
+if (Test-Path $LabelsPath) {
+  $labels = Get-Content $LabelsPath -Raw | ConvertFrom-Json
+  foreach ($prop in $labels.PSObject.Properties) {
+    $cps += [Convert]::ToInt32($prop.Name, 16)
+  }
+} else {
+  Write-Error "Labels file not found: $LabelsPath"
+  exit 1
 }
+
 $sb = New-Object System.Text.StringBuilder
 foreach ($cp in $cps) {
   $bmp = New-Object System.Drawing.Bitmap($bmpW, $bmpH)

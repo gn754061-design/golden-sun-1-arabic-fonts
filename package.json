@@ -1,0 +1,21 @@
+{
+  "name": "golden-sun-1-arabic-fonts",
+  "version": "1.0.0",
+  "description": "Golden Sun 1 Arabic translation package — original hand-drawn fonts, texts, and maps. 100% original work, MIT licensed.",
+  "type": "module",
+  "scripts": {
+    "build": "node pipeline/build_rooyin.mjs",
+    "test": "node -e \"import('./pipeline/ar_shape.mjs').then(() => console.log('ar_shape loaded successfully'))\""
+  },
+  "keywords": [
+    "gba",
+    "gameboy-advance",
+    "golden-sun",
+    "arabic",
+    "localization",
+    "romhacking",
+    "pixel-font"
+  ],
+  "author": "gn754061-design",
+  "license": "MIT"
+}

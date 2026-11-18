@@ -2,11 +2,27 @@
 //   render origin row 12 + ascender(1400/2000) at size 10  =>  baseline at row 19
 //   target grid: baseline row 11  =>  row shift = 11 - 19 = -8
 import fs from 'fs';
-const DIR = 'C:/Users/user/Desktop/game/GS_Arabic_Fresh';
-const labels = JSON.parse(fs.readFileSync(DIR + '/fonts/render_labels.json', 'utf8'));
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DIR = process.env.GS_DIR || __dirname;
+
+const findFile = (relPaths) => {
+  for (const rel of relPaths) {
+    const full = path.resolve(DIR, rel);
+    if (fs.existsSync(full)) return full;
+  }
+  return path.resolve(DIR, relPaths[0]);
+};
+
+const labelsPath = findFile(['render_labels.json', 'fonts/render_labels.json']);
+const renderTxtPath = findFile(['rooyin_render.txt', 'fonts/rooyin_render.txt']);
+
+const labels = JSON.parse(fs.readFileSync(labelsPath, 'utf8'));
 
 // ── parse the render file ──
-const lines = fs.readFileSync(DIR + '/fonts/rooyin_render.txt', 'utf8').split('\n');
+const lines = fs.readFileSync(renderTxtPath, 'utf8').split('\n');
 const renders = new Map();
 {
   let cur = null;
@@ -48,84 +64,47 @@ function toGlyph(r, label) {
       g[y][x] = 1;
     }
   }
-  // the yeh (and yeh+hamza) render at 1:1 with its two dots merged into one 3px
-  // bar because they are 1 design px apart; split them into two distinct dots.
-  if (/^[يئ]/.test(label)) {
-    let bottomRow = -1;
-    for (let y = GH - 1; y >= 1; y--) { if (g[y].some(v => v)) { bottomRow = y; break; } }
-    if (bottomRow >= 1) {
-      const cols = g[bottomRow].map((v, x) => v ? x : -1).filter(x => x >= 0);
-      if (cols.length >= 3) {
-        const first = cols[0], last = cols[cols.length - 1];
-        const span = last - first;
-        const dots = [];
-        for (let c = first; c <= last; c += Math.max(2, Math.round(span / 2))) dots.push(c);
-        g[bottomRow] = new Array(GW).fill(0);
-        for (const d of dots) if (d < GW) g[bottomRow][d] = 1;
-      }
-    }
-  }
-  return { g, w: r.w, h: r.h, top, nudge };
+  // glyph width = ink rightmost column + 1 (the game adds 1 px tracking itself)
+  let maxCol = -1;
+  for (let y = 1; y < GH; y++) for (let x = 0; x < GW; x++) if (g[y][x]) maxCol = Math.max(maxCol, x);
+  const w = maxCol + 1;
+  return { g, w };
 }
 
-// ── allocate codes (same pool rule as before) ──
-const USED = new Set(['d', 'P', 'C', 'L', 'R', 'B', 'b', 'A', 'o', 'h']);
-const freeAscii = [];
-for (let c = 0x41; c <= 0x5a; c++) if (!USED.has(String.fromCharCode(c))) freeAscii.push(c);
-for (let c = 0x61; c <= 0x7a; c++) if (!USED.has(String.fromCharCode(c))) freeAscii.push(c);
-const ext = []; for (let c = 0x80; c <= 0xdd; c++) ext.push(c);
-const pool = [...freeAscii, ...ext];
-
-// ── map the rendered label to (letter, key, form) understood by ar_shape.mjs ──
-const KEYS = {
-  'ا': ['alef', 'ALEF'], 'أ': ['alefHA', 'ALEF WITH HAMZA ABOVE'], 'إ': ['alefHB', 'ALEF WITH HAMZA BELOW'],
-  'آ': ['alefMA', 'ALEF WITH MADDA ABOVE'], 'ب': ['beh', 'BEH'], 'ت': ['teh', 'TEH'], 'ث': ['theh', 'THEH'],
-  'ج': ['jeem', 'JEEM'], 'ح': ['hah', 'HAH'], 'خ': ['khah', 'KHAH'], 'د': ['dal', 'DAL'], 'ذ': ['dhal', 'THAL'],
-  'ر': ['reh', 'REH'], 'ز': ['zain', 'ZAIN'], 'س': ['seen', 'SEEN'], 'ش': ['sheen', 'SHEEN'],
-  'ص': ['sad', 'SAD'], 'ض': ['dad', 'DAD'], 'ط': ['tah', 'TAH'], 'ظ': ['zah', 'ZAH'], 'ع': ['ain', 'AIN'],
-  'غ': ['ghain', 'GHAIN'], 'ف': ['feh', 'FEH'], 'ق': ['qaf', 'QAF'], 'ك': ['kaf', 'KAF'], 'ل': ['lam', 'LAM'],
-  'م': ['meem', 'MEEM'], 'ن': ['noon', 'NOON'], 'ه': ['heh', 'HEH'], 'و': ['waw', 'WAW'], 'ي': ['yeh', 'YEH'],
-  'ى': ['maksura', 'ALEF MAKSURA'], 'ة': ['tehM', 'TEH MARBUTA'], 'ء': ['hamza', 'HAMZA'], 'ئ': ['yehH', 'YEH WITH HAMZA ABOVE'],
-  'ؤ': ['wawH', 'WAW WITH HAMZA ABOVE'], 'ڤ': ['veh', 'VEH'],
-};
-const PUNCT = { '،': 'arComma', '؛': 'arSemi', '؟': 'arQuestion', '«': 'guilOpen', '»': 'guilClose', 'ـ': 'tatweel' };
-const LIG = { 'LAM WITH ALEF': 'lamalef', 'LAM WITH ALEF WITH HAMZA ABOVE': 'lamalefHA', 'LAM WITH ALEF WITH HAMZA BELOW': 'lamalefHB', 'LAM WITH ALEF WITH MADDA ABOVE': 'lamalefMA' };
-
-function parseLabel(label) {
-  if (label.startsWith('ligature ')) {
-    const rest = label.slice('ligature '.length);
-    let form = 'iso';
-    if (rest.endsWith('FINAL')) form = 'fin';
-    else if (rest.endsWith('INITIAL')) form = 'ini';
-    else if (rest.endsWith('MEDIAL')) form = 'med';
-    const base = rest.replace(/ (ISOLATED|FINAL|INITIAL|MEDIAL)$/, '');
-    const key = LIG[base] || 'lig';
-    return { ch: 'لا', key, form };
-  }
-  if (label.includes(':')) {
-    const [ch, form] = label.split(':');
-    const key = PUNCT[ch] || (KEYS[ch] ? KEYS[ch][0] : 'x');
-    return { ch, key, form };
-  }
-  return { ch: label, key: PUNCT[label] || 'x', form: 'iso' };
+function parseLabel(lbl) {
+  const [ch, form] = lbl.split(':');
+  // map Arabic letter name or char to key
+  const nameMap = {
+    'ـ': 'tatweel',
+    'ا': 'alef', 'أ': 'alefHA', 'إ': 'alefHB', 'آ': 'alefMA',
+    'ب': 'beh', 'ت': 'teh', 'ث': 'theh', 'ج': 'jeem', 'ح': 'hah', 'خ': 'khah',
+    'د': 'dal', 'ذ': 'dhal', 'ر': 'reh', 'ز': 'zain', 'س': 'seen', 'ش': 'sheen',
+    'ص': 'sad', 'ض': 'dad', 'ط': 'tah', 'ظ': 'zah', 'ع': 'ain', 'غ': 'ghain',
+    'ف': 'feh', 'ق': 'qaf', 'ك': 'kaf', 'ل': 'lam', 'م': 'meem', 'ن': 'noon',
+    'ه': 'heh', 'و': 'waw', 'ي': 'yeh', 'ى': 'maksura', 'ة': 'tehM', 'ء': 'hamza',
+    'ؤ': 'wawH', 'ئ': 'yehH', 'لا': 'lamalef', 'لأ': 'lamalefHA', 'لإ': 'lamalefHB', 'لآ': 'lamalefMA',
+    '،': 'comma', '؛': 'semicolon', '؟': 'question', '٪': 'percent', '«': 'guillemetL', '»': 'guillemetR',
+    'ـ': 'tatweel', 'ڤ': 'veh'
+  };
+  return { ch, key: nameMap[ch] || ch, form: form || 'iso' };
 }
 
-const map = {}, forms = [];
-// ── spacer glyphs: blank cells whose only job is visual separation ──
-function addSpacer(label, key, ch, width) {
-  const g = Array.from({ length: GH }, () => Array(GW).fill(0));
-  map[pool[forms.length]] = { ch, key, form: 'iso' };
-  forms.push({ ch, label, key, form: 'iso', code: pool[forms.length], glyph: { g, w: width } });
-}
-addSpacer('spacer', 'spacer', '', 2);   // 2 px gap, no ink
+// ── assign codes in the 0x44..0xDF range (leaving stock Latin undisturbed where possible) ──
+// We place the Arabic forms sequentially into 0x44..
+let nextCode = 0x44;
+const pool = [];
+// reserve spacer at 0x44
+pool.push({ code: nextCode++, label: 'spacer', ch: ' ', key: 'space_ar', form: 'iso', glyph: { g: Array.from({ length: GH }, () => Array(GW).fill(0)), w: 4 } });
 
+const forms = [];
+const map = {};
 function add(label, ch, key, form, glyph) {
-  const code = pool[forms.length];
-  if (code === undefined) throw new Error('out of code slots at ' + label);
-  map[code] = { ch, key, form };
-  forms.push({ ch, label, key, form, code, glyph });
-  return code;
+  const code = nextCode++;
+  const entry = { code, label, ch, key, form, glyph };
+  forms.push(entry);
+  map[code] = { ch, key, form, label };
 }
+
 for (const [cpHex, label] of Object.entries(labels)) {
   const cp = parseInt(cpHex, 16);
   const { ch, key, form } = parseLabel(label);
@@ -138,7 +117,20 @@ console.log('widths: min ' + Math.min(...widths) + ' · max ' + Math.max(...widt
 
 // ── pack into the ROM font format ──
 const GH32 = Buffer.alloc(0x100 * 32);
-const rom = fs.readFileSync(DIR + '/rom/base_clean.gba');
+const romPath = process.env.ROM_PATH || path.resolve(DIR, 'rom/base_clean.gba');
+let rom;
+if (fs.existsSync(romPath)) {
+  rom = fs.readFileSync(romPath);
+} else {
+  const existingFont = findFile(['ar_font_new.bin', 'ar_font_final.bin']);
+  if (fs.existsSync(existingFont)) {
+    console.warn(`[WARN] ROM not found at ${romPath}; using existing font template from ${path.basename(existingFont)}`);
+    rom = Buffer.alloc(0x40000);
+    fs.readFileSync(existingFont).copy(rom, 0x31e24);
+  } else {
+    throw new Error(`Clean ROM required to extract base font. Please set ROM_PATH environment variable or place clean ROM at ${romPath}`);
+  }
+}
 Buffer.from(rom.slice(0x31e24, 0x31e24 + 0x100 * 32)).copy(GH32);
 for (const f of forms) {
   const buf = Buffer.alloc(32);
@@ -151,18 +143,29 @@ for (const f of forms) {
   }
   for (let i = 0; i < 32; i++) GH32[f.code * 32 + i] = buf[i];
 }
-fs.writeFileSync(DIR + '/ar_font_new.bin', GH32);
-fs.writeFileSync(DIR + '/ar_font_map.json', JSON.stringify(map, null, 1));
+fs.writeFileSync(path.resolve(DIR, 'ar_font_new.bin'), GH32);
+fs.writeFileSync(path.resolve(DIR, 'ar_font_map.json'), JSON.stringify(map, null, 1));
 
 // width table 0x370D4
-const wt = Buffer.from(rom.slice(0x370d4, 0x370d4 + 0xe0));
+let wt;
+if (fs.existsSync(romPath)) {
+  wt = Buffer.from(rom.slice(0x370d4, 0x370d4 + 0xe0));
+} else {
+  const existingWtbl = findFile(['ar_font_widthtbl.bin']);
+  if (fs.existsSync(existingWtbl)) {
+    wt = Buffer.from(fs.readFileSync(existingWtbl));
+  } else {
+    wt = Buffer.alloc(0xe0);
+  }
+}
 for (const f of forms) wt[f.code - 0x20] = f.glyph.w;
-fs.writeFileSync(DIR + '/ar_font_widthtbl.bin', wt);
-fs.writeFileSync(DIR + '/ar_font_widthtbl.json', JSON.stringify(Object.fromEntries(forms.map(f => ['0x' + f.code.toString(16), f.glyph.w])), null, 1));
+fs.writeFileSync(path.resolve(DIR, 'ar_font_widthtbl.bin'), wt);
+fs.writeFileSync(path.resolve(DIR, 'ar_font_widthtbl.json'), JSON.stringify(Object.fromEntries(forms.map(f => ['0x' + f.code.toString(16), f.glyph.w])), null, 1));
 
 // ── self-check: no ink in row 0, all widths sane ──
 let bad = 0;
 for (const f of forms) for (let x = 0; x < GW; x++) if (f.glyph.g[0][x]) { bad++; console.log('ROW0 INK in ' + f.label); }
 console.log(bad === 0 ? 'row 0 clean on all ' + forms.length + ' glyphs' : 'ROW0 PROBLEMS: ' + bad);
-fs.writeFileSync(DIR + '/fonts/rooyin_font.json', JSON.stringify({ map, forms: forms.map(f => ({ label: f.label, code: f.code, w: f.glyph.w, rows: f.glyph.g })) }, null, 1));
+const outJsonDir = fs.existsSync(path.resolve(DIR, 'fonts')) ? path.resolve(DIR, 'fonts') : DIR;
+fs.writeFileSync(path.resolve(outJsonDir, 'rooyin_font.json'), JSON.stringify({ map, forms: forms.map(f => ({ label: f.label, code: f.code, w: f.glyph.w, rows: f.glyph.g })) }, null, 1));
 console.log('wrote ar_font_new.bin / ar_font_map.json / ar_font_widthtbl.bin');

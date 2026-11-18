@@ -1,11 +1,29 @@
 // ar_shape.mjs — Arabic shaper: Unicode text (with {NN} control markers) -> glyph codes
 // Reusable by the injector and by the width checker.
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const DIR = 'C:/Users/user/Desktop/game/GS_Arabic_Fresh';
-const FONT = fs.readFileSync(DIR + '/ar_font_new.bin');
-const MAP = JSON.parse(fs.readFileSync(DIR + '/ar_font_map.json', 'utf8'));
-const ROM = fs.readFileSync(DIR + '/rom/base_clean.gba');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DIR = process.env.GS_DIR || __dirname;
+
+const findFile = (relPaths) => {
+  for (const rel of relPaths) {
+    const full = path.resolve(DIR, rel);
+    if (fs.existsSync(full)) return full;
+  }
+  return path.resolve(DIR, relPaths[0]);
+};
+
+const fontPath = findFile(['ar_font_new.bin', 'ar_font_final.bin']);
+const mapPath = findFile(['ar_font_map.json']);
+const romPath = process.env.ROM_PATH || path.resolve(DIR, 'rom/base_clean.gba');
+const widthTblPath = findFile(['ar_font_widthtbl.bin']);
+
+const FONT = fs.existsSync(fontPath) ? fs.readFileSync(fontPath) : null;
+const MAP = fs.existsSync(mapPath) ? JSON.parse(fs.readFileSync(mapPath, 'utf8')) : {};
+const ROM = fs.existsSync(romPath) ? fs.readFileSync(romPath) : null;
+const WIDTH_TBL = fs.existsSync(widthTblPath) ? fs.readFileSync(widthTblPath) : null;
 const WTBL = 0x370d4;
 
 // (key, form) -> glyph code, and key -> ch for the joining rules
@@ -29,8 +47,10 @@ const JOINING = new Set([...DUAL, ...RIGHT]);
 // advance width of a code. Control codes (< 0x20) are commands, not glyphs: no pen advance.
 function widthOf(code) {
   if (code < 0x20) return 0;
-  if (MAP[code]) return FONT[code * 32];
-  return ROM[WTBL + (code - 0x20)];
+  if (MAP[code] && FONT) return FONT[code * 32];
+  if (ROM && ROM.length > WTBL + (code - 0x20)) return ROM[WTBL + (code - 0x20)];
+  if (WIDTH_TBL && WIDTH_TBL.length > (code - 0x20)) return WIDTH_TBL[code - 0x20];
+  return 8;
 }
 
 const isAr = c => /[\u0600-\u06FF]/.test(c);
@@ -130,12 +150,12 @@ export function englishAdvance(enLine) {
   while (i < enLine.length) {
     if (enLine[i] === '\\' && enLine[i + 1] === 'x') {
       const code = parseInt(enLine.slice(i + 2, i + 4), 16);
-      w += ROM[WTBL + (code - 0x20)] || 0;
+      w += widthOf(code);
       i += 4;
       continue;
     }
     const c = enLine.charCodeAt(i);
-    w += ROM[WTBL + (c - 0x20)] || 0;
+    w += widthOf(c);
     i++;
   }
   return w;
